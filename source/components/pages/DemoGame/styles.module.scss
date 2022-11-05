@@ -1,0 +1,29 @@
+.game {
+  position: relative;
+
+  &__controls {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.control__button {
+  border: none;
+  background: #CCC;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

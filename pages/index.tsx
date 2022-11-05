@@ -1,5 +1,9 @@
+import MainGame from "source/components/pages/MainGame";
+
 const Home = () => {
-  return (<h1> hola </h1>)
+  return (
+    <MainGame />
+  )
 }
 
 export default Home;
