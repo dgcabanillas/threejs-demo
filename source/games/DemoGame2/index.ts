@@ -1,44 +1,38 @@
 import * as THREE from 'three';
-import Camera from '../Camera';
-// import Cube from 'source/objects/Cube';
-// import DemoLines from 'source/objects/DemoLines';
-import DemoBufferGeometry from 'source/objects/DemoBufferGeometry';
-import { GameObject } from 'source/interfaces/GameObject';
+import Camera from '../../entities/Camera';
+import { IGameObject } from 'source/interfaces/IGameObject';
+import Example from './components/Example-2';
 
-class Game {
+class CarGame {
   renderer: THREE.WebGLRenderer;
   camera: Camera;
   scene: THREE.Scene;
+  clock: THREE.Clock;
+  uniformData: any;
 
-  gameObjects: GameObject[]
+  gameObjects: IGameObject[]
 
   constructor () {
     this.renderer = new THREE.WebGLRenderer();
     this.scene = new THREE.Scene();
     this.camera = new Camera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-    this.camera.position.set(0, 0, 1000);
+    this.camera.position.set(50, 50, 0);
     this.camera.lookAt( 0, 0, 0 );
 
+    this.clock = new THREE.Clock();
+    this.uniformData = {
+      u_time: {
+        type: 'f',
+        value: this.clock.getElapsedTime()
+      }
+    }
+
     this.gameObjects = [
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry(),
-      new DemoBufferGeometry()
+      new Example({ uniformData: this.uniformData }),
     ]
 
     this.gameObjects.forEach(item => { this.scene.add( item.object )})
+
 
     this.animate = this.animate.bind(this);
   }
@@ -49,6 +43,7 @@ class Game {
   }
 
   animate () {
+    this.uniformData.u_time.value = this.clock.getElapsedTime();
     requestAnimationFrame( this.animate );
 
     this.gameObjects.forEach(item => { item.update() })
@@ -66,4 +61,4 @@ class Game {
   }
 }
 
-export default Game;
+export default CarGame;

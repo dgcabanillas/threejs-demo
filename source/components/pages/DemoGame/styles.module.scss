@@ -1,16 +1,5 @@
 .game {
   position: relative;
-
-  &__controls {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 500;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 .control__button {

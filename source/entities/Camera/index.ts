@@ -1,6 +1,6 @@
-import { PerspectiveCamera as THREE_Camera, Vector3 } from 'three';
+import * as THREE from 'three';
  
-class Camera extends THREE_Camera {
+class Camera extends THREE.PerspectiveCamera {
   constructor ( 
     fov?: number | undefined, 
     aspect?: number | undefined, 
@@ -8,7 +8,6 @@ class Camera extends THREE_Camera {
     far?: number | undefined 
   ) {
     super ( fov, aspect, near, far );
-    // this = new THREE_Camera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
   }
 
   setAspectRatio ( aspectRatio: number ) {

@@ -1,17 +1,17 @@
 import { useCallback, useEffect, useRef } from 'react';
-import FullScreenButton from "source/components/core/FullSreenButton";
-import { useResize } from "source/hooks/useResize";
+import FullScreenButton from 'source/components/core/FullSreenButton';
+import Settings from 'source/components/core/Settings';
+import { useResize } from 'source/hooks/useResize';
 
-import DemoGame from "source/games/DemoGame";
-import styles from './styles.module.scss';
+import CarGame from 'source/games/DemoGame2';
 
-const DemoGamePage = () => {
+const DemoGame2 = () => {
   const container = useRef<HTMLDivElement>(null);
-  const game = useRef<DemoGame>();
+  const game = useRef<CarGame>();
 
   const insertCanvasGame = useCallback(() => {
     if ( !container.current || container.current.childNodes.length ) return;
-    game.current = new DemoGame();
+    game.current = new CarGame();
     game.current.init();
     container.current.appendChild( game.current.render() );
   }, [container.current])
@@ -24,11 +24,12 @@ const DemoGamePage = () => {
   });
 
   return (
-    <div className={styles['game']}>
+    <div>
       <div ref={container} />
       <FullScreenButton />
+      <Settings />
     </div>
-  );
+  )
 }
 
-export default DemoGamePage;
+export default DemoGame2;

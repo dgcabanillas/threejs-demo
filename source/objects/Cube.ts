@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import { GameObject } from 'source/interfaces/GameObject';
+import { IGameObject } from 'source/interfaces/IGameObject';
 
-class Cube implements GameObject {
+class Cube implements IGameObject {
   object: THREE.Mesh;
 
   constructor () {

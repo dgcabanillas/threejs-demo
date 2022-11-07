@@ -1,9 +1,9 @@
 import * as THREE from 'three';
-import { GameObject } from 'source/interfaces/GameObject';
+import { IGameObject } from 'source/interfaces/IGameObject';
 
 const MAX_POINTS = 500;
 
-class DemoBufferGeometry implements GameObject {
+class DemoBufferGeometry implements IGameObject {
   object: THREE.Line;
   drawCount: number;
   material: THREE.LineBasicMaterial;

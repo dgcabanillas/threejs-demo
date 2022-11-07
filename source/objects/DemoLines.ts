@@ -1,7 +1,7 @@
 import * as THREE from "three";
-import { GameObject } from "source/interfaces/GameObject";
+import { IGameObject } from "source/interfaces/IGameObject";
 
-class DemoLines implements GameObject {
+class DemoLines implements IGameObject {
   object: THREE.Line;
 
   constructor () {
