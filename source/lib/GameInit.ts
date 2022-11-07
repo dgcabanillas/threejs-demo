@@ -38,6 +38,9 @@ export default class GameInit {
 
     this.objects = [];
 
+    const axesHelper = new THREE.AxesHelper( 100 );
+    this.scene.add ( axesHelper );
+
     this.animate = this.animate.bind(this);
   }
 
